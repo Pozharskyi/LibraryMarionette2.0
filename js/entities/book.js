@@ -47,7 +47,7 @@ Library.module('Entities', function (Entities, Library, Backbone, Marionette, $,
         },
 
         comparator: function (book) {
-            return book.get('title');
+            return book.get('id');
         }
     });
 

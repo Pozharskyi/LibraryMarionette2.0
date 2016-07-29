@@ -3,9 +3,15 @@ Library.module('Entities', function (Entities, Library, Backbone, Marionette, $,
 
         urlRoot: function () {
             console.log(this.options);
-            return 'http://localhost:8000/api/v1/users/' + this.options.collection.options.group + '/books';
+            if(this.options.collection === undefined){
+                return 'http://localhost:8000/api/v1/users/' + this.options.group + '/books';
+            } else {
+                return 'http://localhost:8000/api/v1/users/' + this.options.collection.options.group + '/books';
+            }
+
         },
         initialize: function (models, options) {
+            //console.log(options);
             this.options = options;
         },
 
@@ -19,17 +25,6 @@ Library.module('Entities', function (Entities, Library, Backbone, Marionette, $,
 
 
     Entities.UsersBooks = Backbone.Collection.extend({
-        //url: function (userId) {
-        //    return 'http://localhost:8000/api/v1/users/' + this.userId + '/books';
-        //},
-        //initialize: function (models, options) {
-        //
-        //    this.userid = options.userId;
-        //    console.log(this.userid);
-        //},
-        //url: function() {
-        //    return 'http://localhost:8000/api/v1/users/' + this.userId+'/books';
-        //},
         url: function () {
             return 'http://localhost:8000/api/v1/users/' + this.options.group + '/books';
         },
@@ -50,7 +45,7 @@ Library.module('Entities', function (Entities, Library, Backbone, Marionette, $,
             return books;
         },
         getUsersBookEntity: function (userId, bookId) {
-            var book = new Entities.UsersBook({id: bookId}, {opt1: usersId});
+            var book = new Entities.UsersBook({id: bookId}, {group: userId});
             var defer = $.Deferred();
 
             book.fetch({
@@ -62,6 +57,16 @@ Library.module('Entities', function (Entities, Library, Backbone, Marionette, $,
                 }
             });
             return defer.promise();
+        },
+        assignBookToUser: function(userId, bookId){
+            $.ajax({
+                url: 'http://localhost:8000/api/v1/users/'+userId+'/books/'+bookId,
+                type: 'PUT',
+                success: function(data) {
+                    console.log('book assigned successfully');
+                    console.log(data);
+                }
+            });
         }
 
     };
@@ -71,5 +76,8 @@ Library.module('Entities', function (Entities, Library, Backbone, Marionette, $,
     });
     Library.reqres.setHandler('usersBook:entity', function (userId, bookId) {
         return API.getUsersBookEntity(userId, bookId);
+    });
+    Library.reqres.setHandler('usersBook:assign', function (userId, bookId) {
+        return API.assignBookToUser(userId, bookId);
     });
 });

@@ -14,7 +14,8 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="#"><a href="#createbook" class="js-create">Create book</a></li>
-            <!--<li><a href="#" class="js-create">Create book</a>Link 2</a></li>-->
+            <li><a href="#users" class="js-list-users">All users</a></li>
+
         </ul>
     </div>
 </nav>
@@ -48,15 +49,15 @@
 
 <!--book list template view-->
 <script type="text/template" id="books-list-template">
-<td><%=title %></td>
-<td><%=author %></td>
-<td><%=genre %></td>
-<td><%=year %></td>
-<td>
-    <a href="#books/<%= id%>/edit" class="btn btn-warning btn-sm js-edit">Edit</span></a>
-    <a href="#contacts/<%= id %>" class="btn btn-sm btn-success js-show">Show</a>
-    <button class="btn btn-danger btn-sm js-delete">Delete</button>
-</td>
+    <td><%=title %></td>
+    <td><%=author %></td>
+    <td><%=genre %></td>
+    <td><%=year %></td>
+    <td>
+        <a href="#books/<%= id%>/edit" class="btn btn-warning btn-sm js-edit">Edit</span></a>
+        <a href="#contacts/<%= id %>" class="btn btn-sm btn-success js-show">Show</a>
+        <button class="btn btn-danger btn-sm js-delete">Delete</button>
+    </td>
 </script>
 
 <!--view template for not found book-->
@@ -82,7 +83,7 @@
         </div>
         <div class="form-group">
             <lable for="book-year">Year:</lable>
-            <input type="number" class="form-control book-year-edit"  name="year" value="<%=year %>">
+            <input type="number" class="form-control book-year-edit" name="year" value="<%=year %>">
         </div>
         <button class="btn btn-default js-submit">Edit submit</button>
     </form>
@@ -132,10 +133,12 @@
     <td><%=author %></td>
     <td><%=genre %></td>
     <td><%=year %></td>
-    <td><button class="btn btn-danger btn-sm js-delete">Refund book</button></td>
+    <td>
+        <button class="btn btn-danger btn-sm js-delete">Refund book</button>
+    </td>
     <!--<td>-->
-        <!--<a href="#books/<%= id%>/edit" class="btn btn-warning btn-sm js-edit">Edit</span></a>-->
-        <!--<a href="#contacts/<%= id %>" class="btn btn-sm btn-success js-show">Show</a>-->
+    <!--<a href="#books/<%= id%>/edit" class="btn btn-warning btn-sm js-edit">Edit</span></a>-->
+    <!--<a href="#contacts/<%= id %>" class="btn btn-sm btn-success js-show">Show</a>-->
 
     <!--</td>-->
 </script>
@@ -155,12 +158,65 @@
     </thead>
     <tbody></tbody>
 </script>
+<!--books list for user assigning composite view-->
+<script type="text/template" id="books-list-toassign">
+
+    <thead>
+    <th colspan="100%">AllBooks</th>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Year</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</script>
+
+<!--books list for user assigning item view-->
+<script type="text/template" id="books-list-toassign-template">
+    <td><%=title %></td>
+    <td><%=author %></td>
+    <td><%=genre %></td>
+    <td><%=year %></td>
+    <td>
+        <button class="btn btn-success btn-sm js-assign">Assign book</button>
+    </td>
+</script>
+
+<!--users list item view-->
+<script type="text/template" id="users-list-template">
+    <td><%=firstName %></td>
+    <td><%=lastName %></td>
+    <td><%=email %></td>
+    <td>
+        <a href="#users/<%= id%>" class="btn btn-success btn-sm js-show">Show</span></a>
+        <a href="#users/<%= id%>/books" class="btn btn-primary btn-sm js-show-assigned-books">My books</a>
+        <a href="#users/<%= id%>/assign" class="btn btn-primary btn-sm js-assign-list">Assign books</a>
+    </td>
+
+    <!--<td><button class="btn btn-success btn-sm js-assign">Assign book</button></td>-->
+</script>
+<!--users list composite view-->
+<script type="text/template" id="users-list">
+
+    <thead>
+    <th colspan="100%">All Users</th>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</script>
 
 <script src="js/vendor/jquery.js"></script>
 <script src="js/vendor/json2.js"></script>
 <script src="js/vendor/underscore.js"></script>
 <script src="js/vendor/backbone.js"></script>
-
 
 
 <script src="js/vendor/bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
@@ -193,6 +249,11 @@
 <script src="js/apps/users/show/show_view.js"></script>
 <script src="js/apps/users/show/show_controller.js"></script>
 
+<script src="js/apps/users/assignBook/assignBook_view.js"></script>
+<script src="js/apps/users/assignBook/assignBook_controller.js"></script>
+
+<script src="js/apps/users/list/list_view.js"></script>
+<script src="js/apps/users/list/list_controller.js"></script>
 
 
 <script type="text/javascript">
