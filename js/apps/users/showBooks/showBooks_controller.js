@@ -4,28 +4,26 @@ Library.module('UsersApp.ShowBooks', function (ShowBooks, Library, Backbone, Mar
             console.log('in showUserBooks controller');
             var view;
 
-            //var usersBooks = Library.request('usersBook:entities', id);
-
             var fetchingUsersBook = Library.request('usersBook:entities', id);
             $.when(fetchingUsersBook).done(function(usersBooks){
                 if(usersBooks !== undefined) {
-                    console.log('qqqq');
                     console.log(usersBooks);
 
                     view = new ShowBooks.Books({
                         collection: usersBooks
                     });
                 }
-                //else {
-                //    view = new Library.BooksApp.Show.MissingBook();
-                //}
+                else {
+                    view = new Library.BooksApp.Show.MissingBook();
+                }
 
                 Library.mainRegion.show(view);
             });
 
             view.on('childview:usersBook:delete',function(childview,model){
-                console.log('destroying model')
+                console.log('destroying model');
                 model.destroy();
+                alert('book has been refunded successfully');
             });
 
 

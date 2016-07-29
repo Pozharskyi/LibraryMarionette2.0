@@ -9,23 +9,10 @@ Library.module('BooksApp.Create', function (Create, Library, Backbone, Marionett
             view.on('form:submit', function (data) {
 
                 var book = new Library.Entities.Book(data);
-                //book.save({}, {
-                //    success: function (model, respose, options) {
-                //        console.log("The model has been saved to the server");
-                //        console.log(book);
-                //
-                //        Library.trigger('books:list');
-                //
-                //    },
-                //    error: function (model, xhr, options) {
-                //        console.log("Something went wrong while saving the model");
-                //        view.triggerMethod('form:data:invalid', book.validationError);
-                //        //Library.trigger('books:list');
-                //    }
-                //
-                //});
+
                 if(book.save()){
                     Library.trigger('books:list');
+                    alert('book has been created successfully');
                 } else {
                     view.triggerMethod('form:data:invalid', book.validationError);
                 }

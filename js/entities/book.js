@@ -71,6 +71,15 @@ Library.module('Entities', function (Entities, Library, Backbone, Marionette, $,
                 }
             });
             return defer.promise();
+        },
+        getFreeBookEntities: function(){
+            var books = new Entities.BooksCollection();
+            books.fetch();
+
+
+            console.log(_.where(books,{userId:'1'}));
+            //return books;
+            return books;
         }
     };
 
@@ -80,5 +89,8 @@ Library.module('Entities', function (Entities, Library, Backbone, Marionette, $,
 
     Library.reqres.setHandler('book:entity', function (id) {
         return API.getBookEntity(id);
+    });
+    Library.reqres.setHandler('freeBook:entities', function(){
+        return API.getFreeBookEntities();
     });
 });
