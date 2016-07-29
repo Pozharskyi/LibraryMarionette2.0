@@ -3,6 +3,7 @@ Library.module('UsersApp', function (UsersApp, Library, Backbone, Marionette, $,
         appRoutes: {
             'users/:id': 'showUser',
             'users/:id/books': 'showUsersBooks',
+            //'users/:userId/books/:bookId': 'assignBook'
         }
     });
     var API = {
@@ -13,6 +14,9 @@ Library.module('UsersApp', function (UsersApp, Library, Backbone, Marionette, $,
         showUsersBooks: function (userId) {
             UsersApp.ShowBooks.Controller.showUsersBooks(userId);
         },
+        assignBook: function(userId, bookId){
+
+        }
 
     };
     Library.on('user:show', function (id) {

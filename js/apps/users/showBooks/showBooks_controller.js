@@ -23,6 +23,11 @@ Library.module('UsersApp.ShowBooks', function (ShowBooks, Library, Backbone, Mar
                 Library.mainRegion.show(view);
             });
 
+            view.on('childview:usersBook:delete',function(childview,model){
+                console.log('destroying model')
+                model.destroy();
+            });
+
 
 
 

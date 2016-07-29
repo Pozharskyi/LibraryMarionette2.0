@@ -34,7 +34,7 @@
 <script type="text/template" id="books-list">
 
     <thead>
-    <th colspan="100%" align="center">AllBooks</th>
+    <th colspan="100%">AllBooks</th>
     <tr>
         <th>Title</th>
         <th>Author</th>
@@ -132,6 +132,7 @@
     <td><%=author %></td>
     <td><%=genre %></td>
     <td><%=year %></td>
+    <td><button class="btn btn-danger btn-sm js-delete">Refund book</button></td>
     <!--<td>-->
         <!--<a href="#books/<%= id%>/edit" class="btn btn-warning btn-sm js-edit">Edit</span></a>-->
         <!--<a href="#contacts/<%= id %>" class="btn btn-sm btn-success js-show">Show</a>-->
@@ -143,7 +144,7 @@
 <script type="text/template" id="usersbooks-list">
 
     <thead>
-    <th colspan="100%" align="center">Assigned books</th>
+    <th colspan="100%">Assigned books</th>
     <tr>
         <th>Title</th>
         <th>Author</th>

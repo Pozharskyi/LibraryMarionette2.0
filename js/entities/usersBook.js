@@ -1,7 +1,9 @@
 Library.module('Entities', function (Entities, Library, Backbone, Marionette, $, _) {
     Entities.UsersBook = Backbone.Model.extend({
+
         urlRoot: function () {
-            return 'http://localhost:8000/api/v1/users/' + this.options.group + '/books';
+            console.log(this.options);
+            return 'http://localhost:8000/api/v1/users/' + this.options.collection.options.group + '/books';
         },
         initialize: function (models, options) {
             this.options = options;
