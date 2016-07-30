@@ -10,15 +10,18 @@ Library.module('BooksApp.Edit', function(Edit, Library, Backbone, Marionette, $,
                    });
                    //save book from the form edit, after submitClicked and return to bookShow route
                    view.on('form:submit', function(data){
-                       if(book.save(data)){
-                           alert('book has been edited successfully');
-                           //if we don't set timeout the rendered view will be with old data. TODO find how to fix it
-                           setTimeout(function(){
+                       console.log('in submit');
+                       var valid = book.save(data,{
+                           success: function(book, response){
+                               alert('book has been edited successfully');
                                Library.trigger('book:show', book.get('id'));
-                           },400);
-                       } else {
+
+                           },
+                           //wait: true
+                       });
+                       if(!valid){
                            view.triggerMethod('form:data:invalid', book.validationError);
-                       }
+                       };
 
 
                    });
