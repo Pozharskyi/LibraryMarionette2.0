@@ -1,6 +1,6 @@
 # BSA homework CRUD library on marionette js
 
-Work with REST API: https://github.com/Pozharskyi/LibraryRestFull1.2
+Works with REST API: https://github.com/Pozharskyi/LibraryRestFull1.2
 
 
 Application consists of:
