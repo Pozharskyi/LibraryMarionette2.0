@@ -2,11 +2,21 @@ Library.module('BooksApp.List', function (List, Library, Backbone, Marionette, $
     List.Book = Marionette.ItemView.extend({
         template: '#books-list-template',
         tagName: 'tr',
-
+        ui: {
+            'delete': 'button.js-delete',
+            'show': 'td a.js-show',
+            'edit': 'td a.js-edit'
+        },
+        //events: {
+        //    'click button.js-delete': 'deleteClicked',
+        //    'click td a.js-show': 'showClicked',
+        //    'click td a.js-edit': 'editClicked',
+        //},
         events: {
-            'click button.js-delete': 'deleteClicked',
-            'click td a.js-show': 'showClicked',
-            'click td a.js-edit': 'editClicked',
+            'click @ui.delete': 'deleteClicked',
+            'click @ui.show': 'showClicked',
+            'click @ui.edit': 'editClicked',
+
         },
         editClicked: function (e) {
             e.preventDefault();

@@ -2,8 +2,11 @@ Library.module('UsersApp.AssignBook', function (AssignBook, Library, Backbone, M
     AssignBook.Book = Marionette.ItemView.extend({
         template: '#books-list-toassign-template',
         tagName: 'tr',
+        ui:{
+            'assign':'button.js-assign'
+        },
         events: {
-            'click button.js-assign': 'assignClicked',
+            'click @ui.assign': 'assignClicked',
 
         },
         assignClicked: function () {

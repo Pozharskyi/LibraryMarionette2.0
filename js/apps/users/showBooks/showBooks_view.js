@@ -2,9 +2,12 @@ Library.module('UsersApp.ShowBooks', function (ShowBooks, Library, Backbone, Mar
     ShowBooks.Book = Marionette.ItemView.extend({
         template: '#usersbooks-list-template',
         tagName: 'tr',
+        ui:{
+            'delete':'button.js-delete'
+        },
 
         events: {
-            'click button.js-delete': 'deleteClicked',
+            'click @ui.delete': 'deleteClicked',
         },
         deleteClicked: function () {
             //this.model.collection.remove(this.model);

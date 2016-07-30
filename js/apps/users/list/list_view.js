@@ -2,10 +2,15 @@ Library.module('UsersApp.List', function (List, Library, Backbone, Marionette, $
     List.User = Marionette.ItemView.extend({
         template: '#users-list-template',
         tagName: 'tr',
+        ui:{
+          'assigned-book':'td a.js-show-assigned-books',
+            'show':'td a.js-show',
+            'assign-list':'td a.js-assign-list'
+        },
         events: {
-            'click td a.js-show-assigned-books':'showBooksClicked',
-            'click td a.js-show': 'showClicked',
-            'click td a.js-assign-list': 'showAssignListClicked'
+            'click @ui.assigned-books':'showBooksClicked',
+            'click @ui.show': 'showClicked',
+            'click @ui.assign-list': 'showAssignListClicked'
         },
         showClicked: function(e){
             e.preventDefault();

@@ -1,8 +1,11 @@
 Library.module('BooksApp.Edit', function (Edit, Library, Backbone, Marionette, $, _) {
     Edit.Book = Marionette.ItemView.extend({
         template: '#book-update-template',
+        ui:{
+            'submit':'button.js-submit'
+        },
         events: {
-            'click button.js-submit': 'submitClicked'
+            'click @ui.submit': 'submitClicked'
         },
         submitClicked: function (e) {
             e.preventDefault();
