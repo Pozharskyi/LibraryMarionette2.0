@@ -1,4 +1,4 @@
-# BSA homework CRUD library on marionette js
+# CRUD library on marionette js
 
 Works with REST API: https://github.com/Pozharskyi/LibraryRestFull1.2
 
